@@ -1,23 +1,26 @@
-package 面试篇;
-
-import java.util.HashMap;
+package 面试篇.两数之和;
 
 /**
  * @author 郑元龙
- * @description: 两数之和，优解
- * @date 2022年08月12日 11:47
+ * @description: 两数之和
+ * @date 2022年08月12日 11:45
  */
 
-public class TwoSum02 {
+public class TwoSum01 {
+
+    /**
+     * 暴力解法
+     * @param nums
+     * @param target
+     * @return 返回新数组，0,1
+     */
     public int[] sum(int[] nums, int target){
-        HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
-            //map中是否包含这个key
-            if (map.containsKey( target - nums[i])){
-                return new int[]{map.get(target - nums[i]), i};
+            for (int j = i +1; j < nums.length; j++) {
+                if (target == nums[i] + nums[j]){
+                    return new int[]{i,j};
+                }
             }
-            //分别放入数组的值，和下标
-            map.put(nums[i],i);
         }
         return null;
     }
